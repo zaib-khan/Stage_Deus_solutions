@@ -35,7 +35,7 @@ export class MultiDragListComponent implements OnInit {
 
 
   draging(event:CdkDragStart){
-    console.log(event);
+    console.log(event.source.dropContainer.connectedTo);
     
   }
 
