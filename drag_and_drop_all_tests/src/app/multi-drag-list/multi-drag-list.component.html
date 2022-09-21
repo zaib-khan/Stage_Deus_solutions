@@ -1,16 +1,24 @@
 
 
 <h2>To Do</h2>
-<div class="example-list" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="doneList" (cdkDropListDropped)="drop($event)" >
-    <div class="example-box" *ngFor="let item of todo" cdkDrag (cdkDragStarted)="draging($event)">
+<div class="example-list" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList,nameList]" (cdkDropListDropped)="drop($event)" >
+    <div class="example-box" *ngFor="let item of todo" cdkDrag (cdkDragStarted)="dragStart($event)" (cdkDragDropped)="dragEnd($event)">
         {{item}}
     </div>
 </div>
 
 
 <h2>Done</h2>
-<div class="example-list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="todoList" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>
+<div class="example-list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="todoList" (cdkDropListDropped)="drop($event)" [class.test]="isDragging == true">
+    <div class="example-box" *ngFor="let item of done" cdkDrag >
+        {{item}}
+    </div>
+</div>
+
+
+<h2>Names</h2>
+<div class="example-list" cdkDropList #nameList="cdkDropList" [cdkDropListData]="names" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of names" cdkDrag>
         {{item}}
     </div>
 </div>
