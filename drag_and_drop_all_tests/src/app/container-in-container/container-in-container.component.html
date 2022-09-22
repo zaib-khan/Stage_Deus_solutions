@@ -1,20 +1,27 @@
-<div class="editor" cdkDropList>
+<div class="editor" cdkDropList #test #mainEditor="cdkDropList">
 
 </div>
 
 <div class="placeHolder">
-    <div class="dragebleContainers" cdkDropList>
-        <div class="dragebles" cdkDrag>
-            <p>Container</p>
-        </div>
-        <div class="dragebles" cdkDrag>
-            <p>Container</p>
+    <div class="dragebleContainers" cdkDropList #mainContainer="cdkDropList" [cdkDropListConnectedTo]="mainEditor" >
+        <div class="dragebles" cdkDrag (cdkDragDropped)="addImage()">
+            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+            <p>Cat Image</p>
         </div>
         
     </div>
 
 
     <div class="elements" cdkDropList>
+        <div class="dragebles" cdkDrag>
+            <p>Container<br>2 blocs</p>
 
+        </div>
+
+
+        <div class="dragebles">
+            <p>Container<br>3 blocs</p>
+        
+        </div>
     </div>
 </div>

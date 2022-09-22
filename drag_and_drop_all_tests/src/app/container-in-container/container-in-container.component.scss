@@ -28,3 +28,11 @@
     cursor:move;
 }
 
+
+.custom-placeholder {
+    background: #ccc;
+    border: dotted 3px #999;
+    height: 272px;
+    width: 250px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1); 
+}

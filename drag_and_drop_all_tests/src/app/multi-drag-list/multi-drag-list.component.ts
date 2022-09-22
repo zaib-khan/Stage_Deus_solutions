@@ -36,16 +36,14 @@ export class MultiDragListComponent implements OnInit {
         event.currentIndex,
       );
     }
+    console.log(event.container.element.nativeElement);
+    
   }
 
 
   dragStart(event:CdkDragStart){
     // console.log(event.source.dropContainer.connectedTo);
     this.isDragging = true;
-    
-    console.log(CdkDropList);
-    
-    
   }
 
   dragEnd(event:CdkDragDrop<string[]>){
