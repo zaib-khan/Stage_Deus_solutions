@@ -1,19 +1,26 @@
-<div class="editor" cdkDropList #test #mainEditor="cdkDropList">
-
+<div class="editor" cdkDropList #blueEditor #mainEditor="cdkDropList">
+    <div class="temp" cdkDrag>
+        <div>1</div>
+        <div>2</div>
+    </div>
 </div>
 
 <div class="placeHolder">
     <div class="dragebleContainers" cdkDropList #mainContainer="cdkDropList" [cdkDropListConnectedTo]="mainEditor" >
-        <div class="dragebles" cdkDrag (cdkDragDropped)="addImage()">
-            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+
+        <div class="dragebles" cdkDrag  (cdkDragDropped)="addImage()" (cdkDragEntered)="onDragEntered($event)">
+            <div *cdkDragPlaceholder>
+                <div class="custom-placeholder" *ngIf="isGoodContainer" ></div>
+            </div>
+
             <p>Cat Image</p>
         </div>
         
     </div>
 
 
-    <div class="elements" cdkDropList>
-        <div class="dragebles" cdkDrag>
+    <div class="elements" cdkDropList [cdkDropListConnectedTo]="mainEditor" >
+        <div class="dragebles" cdkDrag (cdkDragDropped)="addContainer_2_blocs($event)">
             <p>Container<br>2 blocs</p>
 
         </div>
@@ -25,3 +32,4 @@
         </div>
     </div>
 </div>
+
