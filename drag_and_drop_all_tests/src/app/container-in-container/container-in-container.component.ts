@@ -1,12 +1,12 @@
 import { CdkDragDrop, CdkDragEnter} from '@angular/cdk/drag-drop';
-import { Component, OnInit,Renderer2,ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit,Renderer2,ViewChild,ElementRef,AfterContentInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'container-in-container',
   templateUrl: './container-in-container.component.html',
   styleUrls: ['./container-in-container.component.scss']
 })
-export class ContainerInContainerComponent implements OnInit {
+export class ContainerInContainerComponent implements OnInit,AfterViewInit {
 
   @ViewChild('blueEditor') editor!: ElementRef;
   isGoodContainer : boolean = false;
@@ -22,6 +22,8 @@ export class ContainerInContainerComponent implements OnInit {
    
     
   }
+
+  ngAfterViewInit(): void {}
 
 
   addImage(){
