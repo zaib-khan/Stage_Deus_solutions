@@ -1,5 +1,8 @@
-import { Component, OnInit,ViewChild,ViewContainerRef,ElementRef,Renderer2,AfterViewInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ViewContainerRef,ElementRef,Renderer2,AfterViewInit,ComponentFactoryResolver,Injector,ComponentRef,TemplateRef } from '@angular/core';
 import { CdkDragDrop, CdkDragEnter} from '@angular/cdk/drag-drop';
+
+import { ContainerTwoBlocComponent } from '../container-two-bloc/container-two-bloc.component';
+import { ArrayType } from '@angular/compiler';
 
 @Component({
   selector: 'tests',
@@ -8,47 +11,57 @@ import { CdkDragDrop, CdkDragEnter} from '@angular/cdk/drag-drop';
 })
 export class TestsComponent implements OnInit,AfterViewInit {
 
- @ViewChild('blueEditor',{read:ElementRef}) editor!: ElementRef;
+ @ViewChild('insertPoint',{read:ViewContainerRef}) editor!: ViewContainerRef;
+ @ViewChild('containerTwoBlocTemplate',{read : TemplateRef}) contentRef!:TemplateRef<any>;
   isGoodContainer : boolean = false;
 
-  constructor(private renderer:Renderer2) { }
+  editorCotent:any = [];
+
+  constructor(private f: ComponentFactoryResolver,private injector: Injector) { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    console.log(this.editor);
+   // console.log(this.editor);
+  
     
   }
 
   addImage(){
-    const image : HTMLImageElement = this.renderer.createElement('img');
-    image.src = 'https://64.media.tumblr.com/763756ea907e30b639da239618bbe2d3/tumblr_mlotjw0e2C1r4xjo2o1_250.gifv';
-    this.renderer.appendChild(this.editor.nativeElement,image);
+    // const image : HTMLImageElement = this.renderer.createElement('img');
+    // image.src = 'https://64.media.tumblr.com/763756ea907e30b639da239618bbe2d3/tumblr_mlotjw0e2C1r4xjo2o1_250.gifv';
+    // this.renderer.appendChild(this.editor.nativeElement,image);
     this.isGoodContainer =  false; 
   }
 
   onDragEntered(event:CdkDragEnter){
    // console.log(event.container.element.nativeElement.id);
    // console.log(this.editor.nativeElement.id);
-    if(this.editor.nativeElement.id == event.container.element.nativeElement.id){
-      this.isGoodContainer = true;
+    // if(this.editor.nativeElement.id == event.container.element.nativeElement.id){
+    //   this.isGoodContainer = true;
       
-    }   
+    // }   
   }
 
   addContainer_2_blocs(event: CdkDragDrop<string[]>){
-    const div : HTMLDivElement = this.renderer.createElement('div');
-    const div1 : HTMLDivElement = this.renderer.createElement('div');
-    const div2 : HTMLDivElement = this.renderer.createElement('div');
-    this.renderer.appendChild(div,div1);
-    this.renderer.appendChild(div,div2);
-    this.renderer.addClass(div,'temp');
 
+/* --------------------------------- TEST 1 --------------------------------- */
+    // const div : HTMLDivElement = this.renderer.createElement('div');
+    // const div1 : HTMLDivElement = this.renderer.createElement('div');
+    // const div2 : HTMLDivElement = this.renderer.createElement('div');
+    // this.renderer.appendChild(div,div1);
+    // this.renderer.appendChild(div,div2);
+    // this.renderer.addClass(div,'temp');
+    // this.renderer.appendChild(this.editor.nativeElement,div);
+/* --------------------------------- TEST 2 --------------------------------- */
+    // const cf = this.f.resolveComponentFactory(ContainerTwoBlocComponent);
+    // const cRef1: ComponentRef<ContainerTwoBlocComponent> = cf.create(this.injector);
+    // this.editor.insert(cRef1.hostView)
+    // console.log(cRef1);
+/* --------------------------------- TEST 3 --------------------------------- */
+this.editorCotent.push(this.contentRef);
+     this.editor.createEmbeddedView(this.contentRef);
 
-
-
-
-    this.renderer.appendChild(this.editor.nativeElement,div);
   }
 
 

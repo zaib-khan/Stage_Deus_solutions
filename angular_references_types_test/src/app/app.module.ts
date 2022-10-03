@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { TestsComponent } from './tests/tests.component';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CatImageComponent } from './cat-image/cat-image.component';
+import { ContainerTwoBlocComponent } from './container-two-bloc/container-two-bloc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestsComponent
+    TestsComponent,
+    CatImageComponent,
+    ContainerTwoBlocComponent
   ],
   imports: [
     BrowserModule,
