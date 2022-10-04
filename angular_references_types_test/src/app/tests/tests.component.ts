@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,ViewContainerRef,ElementRef,Renderer2,AfterViewInit,ComponentFactoryResolver,Injector,ComponentRef,TemplateRef } from '@angular/core';
+import { Component, OnInit,ViewChild,ViewContainerRef,ElementRef,Renderer2,AfterViewInit,ComponentFactoryResolver,Injector,ComponentRef,TemplateRef,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 import { CdkDragDrop, CdkDragEnter} from '@angular/cdk/drag-drop';
 
 import { ContainerTwoBlocComponent } from '../container-two-bloc/container-two-bloc.component';
@@ -7,7 +7,8 @@ import { ArrayType } from '@angular/compiler';
 @Component({
   selector: 'tests',
   templateUrl: './tests.component.html',
-  styleUrls: ['./tests.component.scss']
+  styleUrls: ['./tests.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TestsComponent implements OnInit,AfterViewInit {
 
@@ -15,9 +16,8 @@ export class TestsComponent implements OnInit,AfterViewInit {
  @ViewChild('containerTwoBlocTemplate',{read : TemplateRef}) contentRef!:TemplateRef<any>;
   isGoodContainer : boolean = false;
 
-  editorCotent:any = [];
 
-  constructor(private f: ComponentFactoryResolver,private injector: Injector) { }
+  constructor(private f: ComponentFactoryResolver,private injector: Injector, private cd:ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -57,11 +57,10 @@ export class TestsComponent implements OnInit,AfterViewInit {
     // const cf = this.f.resolveComponentFactory(ContainerTwoBlocComponent);
     // const cRef1: ComponentRef<ContainerTwoBlocComponent> = cf.create(this.injector);
     // this.editor.insert(cRef1.hostView)
-    // console.log(cRef1);
 /* --------------------------------- TEST 3 --------------------------------- */
-this.editorCotent.push(this.contentRef);
-     this.editor.createEmbeddedView(this.contentRef);
 
+  this.editor.createEmbeddedView(this.contentRef);
+  this.cd.markForCheck();
   }
 
 
