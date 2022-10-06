@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    height:calc(100% - 90px);
+    width: 100%;
+
+    sidebar{
+        background-color: #1c3770;
+        height: 100%;
+        width: 20%;
+    }
+    editor{
+        background-color:#f2f2f2;
+        height: 100%;
+        width: 80%;
+    }
+}
+

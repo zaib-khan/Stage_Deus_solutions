@@ -8,13 +8,15 @@ import { TestsComponent } from './tests/tests.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CatImageComponent } from './cat-image/cat-image.component';
 import { ContainerTwoBlocComponent } from './container-two-bloc/container-two-bloc.component';
+import { DraggableIconsComponent } from './components/draggable-icons/draggable-icons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestsComponent,
     CatImageComponent,
-    ContainerTwoBlocComponent
+    ContainerTwoBlocComponent,
+    DraggableIconsComponent
   ],
   imports: [
     BrowserModule,
