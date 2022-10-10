@@ -13,17 +13,14 @@ export class DraggableIconsComponent implements OnInit {
 
   src:string = ''
 
-  constructor(private containerHoverEvent:ContainerHoverEventService) {
-   
-    
-   }
+  constructor(private containerHoverEvent:ContainerHoverEventService) {}
 
   ngOnInit(): void {
     if(this.element == 'image'){
       this.src = '../../../assets/images/1160358.png';
     }else{
       if(this.element == 'container'){
-         this.src = '../../../assets/images/38628.png';
+        this.src = '../../../assets/images/38628.png';
       }
     }
   }
@@ -32,7 +29,7 @@ export class DraggableIconsComponent implements OnInit {
     if(this.element == 'container') this.containerHoverEvent.isHoverStartOrEnd(true);
   }
 
-  onDragEnd(){
+  onDragDropped(){
     this.containerHoverEvent.isHoverStartOrEnd(false);
     
   }
