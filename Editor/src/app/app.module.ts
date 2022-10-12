@@ -10,6 +10,7 @@ import { EditorComponent } from './editor/editor.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DraggableIconsComponent } from './components/draggable-icons/draggable-icons.component';
 import { DraggablesSingleImageComponent } from './components/draggables-single-image/draggables-single-image.component';
+import { Container2blocComponent } from './components/container2bloc/container2bloc.component';
 
 
 
@@ -20,7 +21,8 @@ import { DraggablesSingleImageComponent } from './components/draggables-single-i
     EditorComponent,
     SidebarComponent,
     DraggableIconsComponent,
-    DraggablesSingleImageComponent
+    DraggablesSingleImageComponent,
+    Container2blocComponent
   ],
   imports: [
     BrowserModule,

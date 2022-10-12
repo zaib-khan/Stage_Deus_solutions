@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerHoverEventService } from 'src/app/services/container-hover-event.service';
-
+import { Add2BlocContainerService } from 'src/app/services/add2-bloc-container.service';
+import {CdkDragDrop} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'draggable-icons',
@@ -9,28 +10,38 @@ import { ContainerHoverEventService } from 'src/app/services/container-hover-eve
 })
 export class DraggableIconsComponent implements OnInit {
 
-  @Input('element') element:string | undefined;
+  @Input('element') elementType:string | undefined;
 
   src:string = ''
 
-  constructor(private containerHoverEvent:ContainerHoverEventService) {}
+  constructor(private containerHoverEvent:ContainerHoverEventService, private add2BlocContainer:Add2BlocContainerService) {}
 
   ngOnInit(): void {
-    if(this.element == 'image'){
+    if(this.elementType == 'image'){
       this.src = '../../../assets/images/1160358.png';
     }else{
-      if(this.element == 'container'){
+      if(this.elementType == 'container'){
         this.src = '../../../assets/images/38628.png';
       }
     }
   }
 
+
+
+
+
   onDragStart(){
-    if(this.element == 'container') this.containerHoverEvent.isHoverStartOrEnd(true);
+    if(this.elementType == 'container'){
+      this.containerHoverEvent.isHoverStartOrEnd(true);
+    }
   }
 
-  onDragDropped(){
+  onDragDropped(event: CdkDragDrop<string[]>){
     this.containerHoverEvent.isHoverStartOrEnd(false);
+    if(this.elementType == 'container'){
+      this.add2BlocContainer.sendContainer();
+    }
+    
     
   }
 
