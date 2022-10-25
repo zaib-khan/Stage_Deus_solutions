@@ -1,4 +1,10 @@
-<div cdkDropList class="container">
-    <draggable-icons [element]="'image'"></draggable-icons>
-    <draggable-icons [element]="'container'"></draggable-icons>
+<div>
+    <div cdkDropList class="container">
+        <draggable-icons [element]="'image'"></draggable-icons>
+    
+    </div>
+    
+    <div cdkDropList class="container" [cdkDropListConnectedTo]="editor">
+        <draggable-icons [element]="'container'"></draggable-icons>
+    </div>
 </div>
